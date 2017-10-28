@@ -17,3 +17,19 @@ see [Git Workflow | Atlassian](https://www.atlassian.com/git/tutorials/comparing
 
 * Does this workflow impose any new unnecessary cognitive overhead to the team?
 
+----
+## How it works?
+
+>Developers start by cloning the central repository. In their own local copies of the project, they edit files and commit changes as they would with SVN; however, these new commits are stored locally - they’re completely isolated from the central repository. This lets developers defer synchronizing upstream until they’re at a convenient break point.
+
+>To publish changes to the official project, developers "push" their local master branch to the central repository. This is the equivalent of svn commit, except that it adds all of the local commits that aren’t already in the central master branch.
+
+### Initialize the central repository
+
+>First, someone needs to create the central repository on a server. If it’s a new project, you can initialize an empty repository. Otherwise, you’ll need to import an existing Git or SVN repository.
+
+>Central repositories should always be bare repositories (they shouldn’t have a working directory), which can be created as follows:
+
+    ssh user@host git init --bare /path/to/repo.git
+    
+>Be sure to use a valid SSH username for user, the domain or IP address of your server for host, and the location where you'd like to store your repo for /path/to/repo.git. Note that the .git extension is conventionally appended to the repository name to indicate that it’s a bare repository.
