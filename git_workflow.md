@@ -60,3 +60,20 @@ see [Git Workflow | Atlassian](https://www.atlassian.com/git/tutorials/comparing
     
 >Remember that since these commands create local commits, John can repeat this process as many times as he wants without worrying about what’s going on in the central repository. This can be very useful for large features that need to be broken down into simpler, more atomic chunks.
 
+----
+## Push new commits to central repository
+
+>Once the local repository has new changes committed. These change will need to be pushed to share with other developers on the project.
+
+    git push origin master
+
+>This command will push the new committed changes to the central repository. When pushing changes to the central repository, it is possible that updates from another developer have been previously pushed that contain code which conflict with the intended push updates. Git will output a message indicating this conflict. In this situation, *git pull* will first need to be executed. This conflict scenario will be expanded on in the following section.
+
+----
+## Managing conflicts
+
+>The central repository represents the official project, so its commit history should be treated as sacred and immutable. If a developer’s local commits diverge from the central repository, Git will refuse to push their changes because this would overwrite official commits.
+
+>Before the developer can publish their feature, they need to fetch the updated central commits and rebase their changes on top of them. This is like saying, “I want to add my changes to what everyone else has already done.” The result is a perfectly linear history, just like in traditional SVN workflows.
+
+>If local changes directly conflict with upstream commits, Git will pause the rebasing process and give you a chance to manually resolve the conflicts. The nice thing about Git is that it uses the same *git status* and *git add* commands for both generating commits and resolving merge conflicts. This makes it easy for new developers to manage their own merges. Plus, if they get themselves into trouble, Git makes it very easy to abort the entire rebase and try again (or go find help).
